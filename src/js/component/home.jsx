@@ -20,7 +20,7 @@ const Home = () => {
 		setTodos([]);
 	};
 
-	fetch('', {
+	fetch('https://playground.4geeks.com/todo/users/rdrgzfermin', {
 		method: "PUT",
 		body: JSON.stringify(todos),
 		headers: {
