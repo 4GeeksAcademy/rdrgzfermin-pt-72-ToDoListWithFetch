@@ -17,13 +17,12 @@ const Home = () => {
 		body: JSON.stringify({ 
 			key: "value",
 			key: "value"
-		})
-	});
-
-	async function () {
+		async function () {
 		let response = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin")
 		let data = await response.json()	
 		};
+		})
+	})
 
 	const handleDeleteTodo = (index) => {
 		setTodos(todos.filter((todo, i) => index !== i))
