@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import 'font-awesome/css/font-awesome.min.css';
 
 const Home = () => {
 	const [ inputValue, setInputValue ] = useState("");
@@ -11,7 +10,21 @@ const Home = () => {
 			setInputValue("");
 		}
 	};
-	
+
+	let response = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
+		method: "PUT",
+		headers: { "Content-type": "application/json" },
+		body: JSON.stringify({ 
+			key: "value",
+			key: "value"
+		})
+	});
+
+	async function () {
+		let response = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin")
+		let data = await response.json()	
+		};
+
 	const handleDeleteTodo = (index) => {
 		setTodos(todos.filter((todo, i) => index !== i))
 	};
@@ -19,26 +32,6 @@ const Home = () => {
 	const resetList = () => {
 		setTodos([]);
 	};
-
-	fetch('https://playground.4geeks.com/todo/users/rdrgzfermin', {
-		method: "PUT",
-		body: JSON.stringify(todos),
-		headers: {
-		  "Content-Type": "application/json"
-		}
-	  })
-	  .then(resp => {
-		  console.log(resp.ok);
-		  console.log(resp.status);
-		  console.log(resp.text());
-		  return resp.json();
-	  })
-	  .then(data => {
-		  console.log(data);
-	  })
-	  .catch(error => {
-		  console.error(error);
-	  });
 
 	return (
 		<div className="container">
