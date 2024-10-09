@@ -11,26 +11,46 @@ const Home = () => {
 		}
 	};
 
-	let response = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
+	let putResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
 		method: "PUT",
 		headers: { "Content-type": "application/json" },
 		body: JSON.stringify({ 
 			key: "value",
 			key: "value"
-		async function () {
-		let response = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin")
-		let data = await response.json()	
-		};
 		})
 	})
-
+	let putData = await response.json()
+	
 	const handleDeleteTodo = (index) => {
 		setTodos(todos.filter((todo, i) => index !== i))
 	};
+
+	let deleteResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
+		method: "DELETE",
+		headers: { "Content-type": "application/json" },
+		body: JSON.stringify({ 
+			key: "value",
+			key: "value"
+		})
+	})
+	let deleteData = await response.json()
 	
 	const resetList = () => {
 		setTodos([]);
 	};
+
+	let postResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
+		method: "POST",
+		headers: { "Content-type": "application/json" },
+		body: JSON.stringify({ 
+			key: "value",
+			key: "value"
+		})
+	})
+	let postData = await response.json()
+
+	let getResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin")
+	let getData = await response.json()
 
 	return (
 		<div className="container">
