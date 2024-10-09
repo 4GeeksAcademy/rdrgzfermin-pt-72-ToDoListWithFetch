@@ -4,53 +4,51 @@ const Home = () => {
 	const [ inputValue, setInputValue ] = useState("");
 	const [ todos, setTodos ] = useState([]);
 
+	const API_URL = 'https://playground.4geeks.com/todo/users/rdrgzfermin';
+
+    useEffect(() => {
+        fetch(API_URL)
+            .then((resp) => resp.json())
+            .then((data) => {
+                setTasks(data);
+            })
+            .catch((error) => console.log("Error loading tasks", error));
+    }, []);
+    
+    const updateTasksOnServer = (newTasks) => {
+        fetch(API_URL, {
+            method: "PUT",
+            body: JSON.stringify(newTasks),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then((resp) => {
+            if (resp.ok) {
+                console.log("Tasks updated successfully");
+            }
+            return resp.json();
+        })
+        .catch((error) => console.log("Error updating tasks", error));
+    };
+
 	const handleAddTodo = (e) => {
 		if (e.key === "Enter" && inputValue.trim() !== "") {
 			setTodos([...todos, inputValue.trim()]);
 			setInputValue("");
+			updateTasksOnServer(updatedTasks);
 		}
 	};
-
-	let putResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
-		method: "PUT",
-		headers: { "Content-type": "application/json" },
-		body: JSON.stringify({ 
-			key: "value",
-			key: "value"
-		})
-	})
-	let putData = await response.json()
 	
 	const handleDeleteTodo = (index) => {
 		setTodos(todos.filter((todo, i) => index !== i))
+		updateTasksOnServer(updatedTasks);
 	};
-
-	let deleteResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
-		method: "DELETE",
-		headers: { "Content-type": "application/json" },
-		body: JSON.stringify({ 
-			key: "value",
-			key: "value"
-		})
-	})
-	let deleteData = await response.json()
 	
 	const resetList = () => {
 		setTodos([]);
+		updateTasksOnServer([]);
 	};
-
-	let postResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin", {
-		method: "POST",
-		headers: { "Content-type": "application/json" },
-		body: JSON.stringify({ 
-			key: "value",
-			key: "value"
-		})
-	})
-	let postData = await response.json()
-
-	let getResponse = await fetch("https://playground.4geeks.com/todo/users/rdrgzfermin")
-	let getData = await response.json()
 
 	return (
 		<div className="container">
