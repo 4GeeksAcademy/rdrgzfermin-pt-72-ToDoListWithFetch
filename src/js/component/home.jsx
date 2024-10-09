@@ -4,50 +4,21 @@ const Home = () => {
 	const [ inputValue, setInputValue ] = useState("");
 	const [ todos, setTodos ] = useState([]);
 
-	const API_URL = 'https://playground.4geeks.com/todo/users/rdrgzfermin';
 
-    useEffect(() => {
-        fetch(API_URL)
-            .then((resp) => resp.json())
-            .then((data) => {
-                setTasks(data);
-            })
-            .catch((error) => console.log("Error loading tasks", error));
-    }, []);
-    
-    const updateTasksOnServer = (newTasks) => {
-        fetch(API_URL, {
-            method: "PUT",
-            body: JSON.stringify(newTasks),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        .then((resp) => {
-            if (resp.ok) {
-                console.log("Tasks updated successfully");
-            }
-            return resp.json();
-        })
-        .catch((error) => console.log("Error updating tasks", error));
-    };
-
+	
 	const handleAddTodo = (e) => {
 		if (e.key === "Enter" && inputValue.trim() !== "") {
-			setTodos([...todos, inputValue.trim()]);
-			setInputValue("");
-			updateTasksOnServer(updatedTasks);
+			setTodos([...todos, inputValue.trim()])
+			setInputValue("")
 		}
 	};
 	
 	const handleDeleteTodo = (index) => {
 		setTodos(todos.filter((todo, i) => index !== i))
-		updateTasksOnServer(updatedTasks);
 	};
 	
 	const resetList = () => {
-		setTodos([]);
-		updateTasksOnServer([]);
+		setTodos([])
 	};
 
 	return (
