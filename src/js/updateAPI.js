@@ -1,3 +1,5 @@
+import 'font-awesome/css/font-awesome.min.css';
+
 export const addUser = () => {
     fetch(`https://playground.4geeks.com/todo/users/rdrgzfermin`, {
         method: "POST",
@@ -44,7 +46,7 @@ export const fetchTodos = (setTodos) => {
                 setTodos(data.todos || []); // Safeguard against undefined 'todos'
             })
             .catch(error => console.error("Error fetching tasks:", error));
-}
+};
 
 export const addTodoToApi = async(todos, inputValue, setTodos) => {
     try {
@@ -94,4 +96,4 @@ export const deleteTaskFromApi = async(todoId, setTodos) => {
     } catch (error){
         console.error("Error updating tasks to API:", error);
     }
-}
+};
