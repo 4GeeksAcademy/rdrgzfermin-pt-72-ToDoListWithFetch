@@ -1,6 +1,4 @@
 export const addUser = () => {
-
-
     fetch(`https://playground.4geeks.com/todo/users/rdrgzfermin`, {
         method: "POST",
         headers: {
@@ -16,10 +14,6 @@ export const addUser = () => {
 
         })
         .catch(error => console.error("Error adding user:", error));
-
-
-
-
 };
 
 export const clearAll = (setTodos) => {
