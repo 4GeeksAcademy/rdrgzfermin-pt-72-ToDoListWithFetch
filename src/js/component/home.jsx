@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { addUser, clearAll, fetchTodos, addTodoToApi, deleteTaskFromApi } from "../updateAPI";
 import 'font-awesome/css/font-awesome.min.css';
+
 const Home = () => {
     const [inputValue, setInputValue] = useState("");
     const [todos, setTodos] = useState([]);
